@@ -1,0 +1,69 @@
+version: '3'
+
+services:
+  chat-service:
+    build: ./chat-service
+    ports:
+      - "5000:5000"
+    environment:
+      - ENV=development
+    volumes:
+      - ./chat-service:/app
+    depends_on:
+      - redis
+    networks:
+      - cloud-network
+
+  document-service:
+    build: ./document-service
+    ports:
+      - "5001:5000"
+    environment:
+      - ENV=development
+    volumes:
+      - ./document-service:/app
+    networks:
+      - cloud-network
+
+  quiz-service:
+    build: ./quiz-service
+    ports:
+      - "5002:5000"
+    environment:
+      - ENV=development
+    volumes:
+      - ./quiz-service:/app
+    networks:
+      - cloud-network
+
+  stt-service:
+    build: ./stt-service
+    ports:
+      - "5003:5000"
+    environment:
+      - ENV=development
+    volumes:
+      - ./stt-service:/app
+    networks:
+      - cloud-network
+
+  tts-service:
+    build: ./tts-service
+    ports:
+      - "5004:5000"
+    environment:
+      - ENV=development
+    volumes:
+      - ./tts-service:/app
+    networks:
+      - cloud-network
+
+  redis:
+    image: "redis:alpine"
+    container_name: "redis"
+    networks:
+      - cloud-network
+
+networks:
+  cloud-network:
+    driver: bridge
