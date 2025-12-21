@@ -50,3 +50,9 @@ The platform is built using **microservices** deployed as **containers** and orc
    ```bash
    git clone https://github.com/your-username/cloud-based-learning-platform.git
    cd cloud-based-learning-platform
+
+
+### Code Genetated by
+1. Yousef
+2. Hassan x2
+3. Mido
